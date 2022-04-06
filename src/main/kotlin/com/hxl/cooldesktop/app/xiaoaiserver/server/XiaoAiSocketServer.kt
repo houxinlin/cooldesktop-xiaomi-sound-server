@@ -62,7 +62,6 @@ class XiaoAiSocketServer : Server {
                 xiaoAiClient.runClient(client)
             } catch (e: Exception) {
                 log.info("读取数据错误{}", e.message)
-                stopServerSocket()
             }
         }
     }

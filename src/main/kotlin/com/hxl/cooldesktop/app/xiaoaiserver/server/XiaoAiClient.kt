@@ -23,6 +23,13 @@ class XiaoAiClient {
     private var heartbeatScheduledFutureTask: RunnableScheduledFuture<*>? = null
     private var isConnectioned: Boolean = false
     fun runClient(socketChannel: SocketChannel) {
+        if (clientSocket != null) {
+            if (clientSocket!!.isConnected) {
+                try {
+                    clientSocket?.close()
+                }catch (e:Exception){}
+            }
+        }
         this.clientSocket = socketChannel
         this.isConnectioned = true
         messageEncode = MessageEncode(socketChannel!!)
